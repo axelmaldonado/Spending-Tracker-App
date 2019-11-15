@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spending_tracker_app/widgets/chart.dart';
 import 'package:spending_tracker_app/widgets/transaction_list.dart';
-
 import './models/transaction.dart';
-
 import './widgets/new_transaction.dart';
 import './widgets/chart.dart';
 
@@ -14,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Spending Tracker',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
@@ -45,20 +44,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _userTransactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: "New Shoes",
-    //   amount: 69.69,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: "Groceries",
-    //   amount: 29.29,
-    //   date: DateTime.now(),
-    // ),
-  ];
+  final List<Transaction> _userTransactions = [];
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
@@ -119,7 +105,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Container(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Chart(_recentTransactions),
